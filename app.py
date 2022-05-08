@@ -11,7 +11,6 @@ def load_model():
     print(" * Loading pre-trained model ...")
     recognizer = cv2.face.LBPHFaceRecognizer_create()
     recognizer.read('./sample_model.yml')
-
     print(' * Loading end')
 
 
@@ -27,9 +26,8 @@ def result():
         image_pil = Image.open(request.files['image']).convert('L')
         image = np.array(image_pil, 'uint8')
         # 類似度を出力
-        label, predict_Confidence = recognizer.predict(image)
+        _, predict_Confidence = recognizer.predict(image)
         predict_Confidence = str(predict_Confidence)
-        # render_template('./result.html')
         return render_template('./result.html', title='類似度', predict_Confidence=predict_Confidence)
 
 load_model()
