@@ -1,0 +1,6 @@
+.DS_Store
+
+# 機械学習train用の画像フォルダ
+train_images
+# 学習済みモデル
+sample_model.yml
