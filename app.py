@@ -1,7 +1,4 @@
 import os
-import math
-import requests
-import random
 from flask import Flask, render_template, request
 import cv2
 import numpy as np
@@ -21,22 +18,6 @@ def load_model():
 @app.route("/")
 def hello_world():
     return render_template('./flask_api_index.html')
-
-# ランダムな数字を返す(0-100)
-@app.route('/rand')
-def rand():
-    num = math.floor(random.uniform(0, 100))
-    return str(num)
-
-# 猫画像を返す
-# The Cat API (https://thecatapi.com/)
-@app.route('/cats')
-def cats():
-    url = "https://api.thecatapi.com/v1/images/search"
-    headers = {'x-api-key': 'hogehoge'}
-    result = requests.get(url, headers=headers)
-    jsonData = result.json()
-    return "<img src=" + jsonData[0]["url"] + " width=500>"
 
 @app.route('/result', methods=['POST'])
 def result():
