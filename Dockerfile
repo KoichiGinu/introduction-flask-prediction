@@ -20,4 +20,4 @@ COPY . /opt/app
 # clearn
 RUN rm -rf /var/lib/apt/lists/*
 
-CMD exec gunicorn --bind :80 --workers 1 --threads 8 --timeout 0 app:app
+CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 app:app
